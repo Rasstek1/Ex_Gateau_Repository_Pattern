@@ -1,8 +1,26 @@
-﻿@{
+﻿@model IEnumerable<Gateau>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="row">
+    @foreach (var gateau in Model)
+    {
+        // Générer le chemin d'accès à l'image
+        var imagePath = $"~/img/gateau{gateau.Id}.jpg";
+
+        <div class="gateau-card">
+            <img src="@Url.Content(imagePath)" class="card-img-top" alt="Image du gâteau">
+            <h3>@gateau.Nom</h3>
+            <p>@gateau.Description</p>
+            <button onclick="afficherIngredients(@gateau.Id)">Voir les ingrédients</button>
+        </div>
+    }
+
+    @{
+        //nous utilisons la variable imageUrl pour générer le chemin d'accès à l'image en concaténant le 
+        //chemin d'accès relatif "~/img/" avec l'ID de chaque gâteau. Assurez-vous que les noms de vos images 
+        //correspondent aux identifiants de vos gâteaux.
+        //De cette façon, chaque gâteau sera associé à son image correspondante en utilisant l'identifiant.
+
+    }
