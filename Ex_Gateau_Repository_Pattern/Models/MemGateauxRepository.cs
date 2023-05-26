@@ -9,8 +9,8 @@
             new Gateau
             {
                 Id = 1,
-                Nom = "img/Gateau1.jpg",
-                UrlImage = "img/Cheesecake-new-yorkais-au-limoncello.jpg",
+                Nom = "Cheesecake new-yorkais au limoncello",
+                UrlImage = "img/Gateau1.jpg",
                 Description = "Le cheesecake new-yorkais au limoncello est un gâteau au fromage blanc, citron et limoncello. Un dessert frais et léger, idéal pour terminer un repas copieux.",
                 Ingredients = "Biscuits,Beurre fondu,Fromage blanc,Œufs,Sucre,Extrait de vanille,Limoncello,Zeste de citron"
             },
@@ -18,8 +18,8 @@
             new Gateau
             {
                 Id = 2,
-                Nom = "img/Gateau2.jpg",
-                UrlImage = "img/gateau-au-fromage.jpg",
+                Nom = "gateau au fromage",
+                UrlImage = "img/Gateau2.jpg",
                 Description = "Le gâteau au fromage est un dessert à base de fromage frais, d'œufs, de sucre et de crème fraîche, sur une croûte de biscuits émiettés.",
                 Ingredients = "Biscuits,Beurre fondu,Fromage frais,Œufs,Sucre,Crème fraîche"
             },

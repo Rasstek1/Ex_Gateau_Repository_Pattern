@@ -34,7 +34,22 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
         public IActionResult Index()
         {
             var gateaux = _gateauRepository.MesGateaux;
-            return View(gateaux);
+
+            if (gateaux != null && gateaux.Any())
+            {
+                return View(gateaux);
+            }
+            else
+            {
+                return View("AucunGateauDisponible"); // Spécifiez le nom de la vue qui affiche le message d'erreur
+            }
+        }
+
+
+        public IActionResult GetImage(string imageName)
+        {
+            var imagePath = $"~/img/{imageName}.jpg";
+            return File(imagePath, "image/jpeg");
         }
     }
 }
