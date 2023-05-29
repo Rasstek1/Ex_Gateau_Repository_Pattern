@@ -45,14 +45,31 @@ app.UseAuthorization();
 
 
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Gateau}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "gateau",
+        pattern: "{controller=Gateau}/{action=Index}/{id?}");
+});
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "ingredients",
+        pattern: "gateau/ingredients/{id}",
+        defaults: new { controller = "Gateau", action = "Ingredients" });
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 
 app.Run();

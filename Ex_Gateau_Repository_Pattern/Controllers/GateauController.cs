@@ -35,7 +35,8 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
         {
             var gateaux = _gateauRepository.MesGateaux;
 
-            if (gateaux != null && gateaux.Any())
+           
+            if (gateaux != null)
             {
                 return View("~/Views/Home/Index.cshtml", gateaux);
             }
@@ -43,13 +44,27 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
             {
                 return View("Ecoeurer que ca marche pas"); // ou une autre logique de gestion si la liste est vide
             }
+           
         }
 
 
         public IActionResult GetImage(string imageName)
         {
             var imagePath = $"~/img/{imageName}.jpg";
-            return File(imagePath, "image/jpeg");
+            return File(imagePath, "image/jpg");
         }
+
+        public IActionResult Ingredients(int id)
+        {
+            var gateau = _gateauRepository.GetGateau(id);
+
+            if (gateau == null)
+            {
+                return NotFound();
+            }
+
+            return View(gateau);
+        }
+
     }
 }

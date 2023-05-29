@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.ConstrainedExecution;
+using System.Collections.Generic;
+using Ex_Gateau_Repository_Pattern.Models;
 
 namespace Ex_Gateau_Repository_Pattern.Models
 {

@@ -10,7 +10,7 @@
             {
                 Id = 1,
                 Nom = "Cheesecake new-yorkais au limoncello",
-                UrlImage = "img/Gateau1.jpg",
+                UrlImage = "Gateau1.jpg",
                 Description = "Le cheesecake new-yorkais au limoncello est un gâteau au fromage blanc, citron et limoncello. Un dessert frais et léger, idéal pour terminer un repas copieux.",
                 Ingredients = "Biscuits,Beurre fondu,Fromage blanc,Œufs,Sucre,Extrait de vanille,Limoncello,Zeste de citron"
             },
@@ -18,8 +18,8 @@
             new Gateau
             {
                 Id = 2,
-                Nom = "gateau au fromage",
-                UrlImage = "img/Gateau2.jpg",
+                Nom = "Gâteau au fromage",
+                UrlImage = "Gateau2.jpg",
                 Description = "Le gâteau au fromage est un dessert à base de fromage frais, d'œufs, de sucre et de crème fraîche, sur une croûte de biscuits émiettés.",
                 Ingredients = "Biscuits,Beurre fondu,Fromage frais,Œufs,Sucre,Crème fraîche"
             },
@@ -28,7 +28,7 @@
             {
                 Id = 3,
                 Nom = "Gâteau à la vanille dans une tasse",
-                UrlImage = "img/Gateau3.jpg",
+                UrlImage = "Gateau3.jpg",
                 Description = "Le gâteau à la vanille dans une tasse est un gâteau cuit au micro-ondes dans une tasse. Un dessert rapide et facile à préparer, idéal pour les petites faims.",
                 Ingredients = "Farine,Sucre,Levure chimique,Œuf,Beurre fondu,Lait,Vanille liquide",
             },
@@ -37,7 +37,7 @@
             {
                 Id = 4,
                 Nom = "Nuage de fruits",
-                UrlImage = "img/Gateau4.jpg",
+                UrlImage = "Gateau4.jpg",
                 Description = "Le nuage de fruits est un gâteau à base de fruits rouges, fruits jaunes, fruits verts, œufs, sucre, beurre fondu et farine.",
                 Ingredients = "Fruits rouges,Fruits jaunes,Fruits verts,Œufs,Sucre,Beurre fondu,Farine",
             },
@@ -46,15 +46,16 @@
             {
                 Id = 5,
                 Nom = "Scones à la courge, à la sauge et au cheddar",
-                UrlImage = "img/Gateau5.jpg",
+                UrlImage = "Gateau5.jpg",
                 Description = "Les scones à la courge, à la sauge et au cheddar sont des petits pains à base de courge, sauge, cheddar, farine, levure, beurre, lait, œuf, sel et poivre.",
                 Ingredients = "Courge,Sauge,Cheddar,Farine,Levure,Beurre,Lait,Œuf,Sel,Poivre",
             },
 
             new Gateau
-            { Id = 6,
+            {
+              Id = 6,
               Nom = "Clafoutis aux petits fruits",
-              UrlImage = "img/Gateau6.jpg",
+              UrlImage = "Gateau6.jpg",
               Description = "Le clafoutis aux petits fruits est un gâteau à base de fruits rouges, œufs, sucre, farine, lait, beurre, vanille et sel.",
               Ingredients = "Fruits rouges,Œufs,Sucre,Farine,Lait,Beurre,Vanille,Sel",
             }
@@ -72,7 +73,7 @@
         /// <returns>Le gâteau avec l'identifiant gateauId</returns>
         public Gateau GetGateau(int gateauId)
         {
-            return MesGateaux.FirstOrDefault(g => g.Id == gateauId);
+            return MesGateaux.FirstOrDefault(g => g.Id == gateauId) ?? null;
         }
 
 

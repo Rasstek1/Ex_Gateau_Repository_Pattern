@@ -2,29 +2,36 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    
 }
 
+
+
 <div class="row">
-    <p>Allo mon chum</p>
     @if (Model != null)
     {
         @foreach (var gateau in Model)
         {
-            var imagePath = $"~/{gateau.UrlImage}";
+            var imagePath = $"~/img/{gateau.UrlImage}";
 
-            <div class="gateau-card">
-                <img src="@Url.Content(imagePath)" class="card-img-top" alt="Image du gâteau">
-                <h3>@gateau.Nom</h3>
-                <p>@gateau.Description</p>
-                <button onclick="afficherIngredients(@gateau.Id)">Voir les ingrédients</button>
+            <div class="col-md-6">
+                <div class="gateau-card card d-flex flex-column">
+                    <img src="@Url.Content(imagePath)" class="card-img-top mb-3" alt="Image du gâteau">
+                    <div class="card-body">
+                        <h3 class="card-title">@gateau.Nom</h3>
+                        <p class="card-text">@gateau.Description</p>
+                        <a href="@Url.Action("Ingredients", "Gateau", new { id = gateau.Id })" class="btn btn-primary mt-auto">Voir les ingrédients</a>
+                    </div>
+                </div>
             </div>
         }
     }
-
     else
     {
-        <p>Aucun gâteau n'est disponible.</p>
+        <p>Aucun gâteau n'est disponible pour l'instant, mange autre chose.</p>
     }
 </div>
+
+
 
 

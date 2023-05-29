@@ -27,6 +27,14 @@ namespace Ex_Gateau_Repository_Pattern
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "gateau",
+                    pattern: "{controller=Gateau}/{action=Index}/{id?}");
+            });
         }
     }
 }
+    
