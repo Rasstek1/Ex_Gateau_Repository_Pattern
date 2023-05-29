@@ -37,11 +37,11 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
 
             if (gateaux != null && gateaux.Any())
             {
-                return View(gateaux);
+                return View("~/Views/Home/Index.cshtml", gateaux);
             }
             else
             {
-                return View("AucunGateauDisponible"); // Spécifiez le nom de la vue qui affiche le message d'erreur
+                return View("Ecoeurer que ca marche pas"); // ou une autre logique de gestion si la liste est vide
             }
         }
 

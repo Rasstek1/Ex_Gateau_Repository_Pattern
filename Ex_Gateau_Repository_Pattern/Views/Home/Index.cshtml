@@ -1,15 +1,16 @@
 ﻿@model IEnumerable<Gateau>
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
-
 <div class="row">
+    <p>Allo mon chum</p>
     @if (Model != null)
     {
-        foreach (var gateau in Model)
+        @foreach (var gateau in Model)
         {
-            var imagePath = $"~/img/{gateau.UrlImage}";
+            var imagePath = $"~/{gateau.UrlImage}";
 
             <div class="gateau-card">
                 <img src="@Url.Content(imagePath)" class="card-img-top" alt="Image du gâteau">
@@ -19,6 +20,7 @@
             </div>
         }
     }
+
     else
     {
         <p>Aucun gâteau n'est disponible.</p>
