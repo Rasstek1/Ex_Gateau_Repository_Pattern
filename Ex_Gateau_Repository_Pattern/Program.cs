@@ -55,6 +55,11 @@ app.UseEndpoints(endpoints =>
         name: "ingredients",
         pattern: "gateau/ingredients/{id}",
         defaults: new { controller = "Gateau", action = "Ingredients" });
+
+    endpoints.MapControllerRoute(
+    name: "create",
+    pattern: "gateau/create",
+    defaults: new { controller = "Gateau", action = "Create" });
 });
 
 

@@ -4,7 +4,7 @@
     {
         //si new List<Gateau>() avait un parametre(int param) il faudrai le mettre a l'initialisation de builder.Services.AddSingleton<IGateauRepository, MemGateauxRepository>();
         //dans program.cs et ca ressemblerait a builder.Services.AddSingleton<IGateauRepository, MemGateauxRepository>(param);
-        public IEnumerable<Gateau> MesGateaux => new List<Gateau>()
+        public List<Gateau> MesGateaux => new List<Gateau>()
         {
             new Gateau
             {
@@ -76,6 +76,28 @@
             return MesGateaux.FirstOrDefault(g => g.Id == gateauId) ?? null;
         }
 
+        /// <summary>
+        /// Méthode qui ajoute un gâteau à la liste MesGateaux. La methode Add () est une methode de la classe List<> alors je vais 
+        /// devoir changer le type de MesGateaux en List<> pour pouvoir utiliser la methode Add() au lieu de IEnumerable<Gateau>. dans MesGateaux
+        /// je vais le changer pour List<Gateau> et je vais changer le return de la methode GetGateau() pour qu'il retourne une List<Gateau> au lieu de IEnumerable<Gateau>
+        /// </summary>
+        /// <param name="gateau"></param>
+        public void AjouterGateau(Gateau gateau)
+        {
+            MesGateaux.Add(gateau);
+        }
 
+
+        /// <summary>
+        /// Dans cet exemple, nous vérifions d'abord si la liste MesGateaux contient déjà des éléments en utilisant la méthode Any().
+        /// Si c'est le cas, nous utilisons la méthode Max() pour obtenir le plus grand ID parmi les gâteaux existants. 
+        /// Sinon, nous fixons la valeur de lastId à 0.
+        /// </summary>
+        /// <returns></returns>
+        public int GetNewId()
+        {
+            int lastId = MesGateaux.Any() ? MesGateaux.Max(g => g.Id) : 0;
+            return lastId + 1;
+        }
     }
 }

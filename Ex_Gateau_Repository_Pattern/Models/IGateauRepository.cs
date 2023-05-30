@@ -7,9 +7,13 @@ namespace Ex_Gateau_Repository_Pattern.Models
 {
     public interface IGateauRepository
     {
-        IEnumerable<Gateau> MesGateaux { get; }// propriété qui retourne une liste de gateaux
+        public List<Gateau> MesGateaux { get; }// propriété qui retourne une liste de gateaux
+
+        void AjouterGateau(Gateau gateau);
+
         //IEnumerable est une interface qui permet de parcourir une collection, Une Liste, un tableau, un dictionnaire, etc.
         Gateau GetGateau(int id);
+        int GetNewId();//Methode qui retourne un nouveau id pour un gateau qui sera ajouté à la liste
     }
     /// <summary>
     /// Pourquoi utilisons-nous une interface? Cette interface nous donne la possibilité

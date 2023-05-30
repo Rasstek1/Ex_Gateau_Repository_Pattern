@@ -1,0 +1,36 @@
+﻿@model Gateau
+    
+
+@{
+    ViewData["Title"] = "Ajouter un gâteau";
+}
+
+<!--Creer un formulaire-->
+
+
+<form method="post" action="@Url.Action("AjouterGateau", "Gateau")">
+    <div class="mb-3">
+        <label for="nom" class="form-label">Nom du gâteau</label>
+        <input type="text" class="form-control" id="nom" name="Nom" required>
+        <span class="text-danger">@Html.ValidationMessageFor(m => m.Nom)</span>
+    </div>
+    <div class="mb-3">
+        <label for="urlImage" class="form-label">URL de l'image</label>
+        <input type="text" class="form-control" id="urlImage" name="UrlImage" required>
+        <span class="text-danger">@Html.ValidationMessageFor(m => m.UrlImage)</span>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="Description" rows="3" required></textarea>
+        <span class="text-danger">@Html.ValidationMessageFor(m => m.Description)</span>
+    </div>
+    <div class="mb-3">
+        <label for="ingredients" class="form-label">Ingrédients</label>
+        <textarea class="form-control" id="ingredients" name="Ingredients" rows="5" required></textarea>
+        <span class="text-danger">@Html.ValidationMessageFor(m => m.Ingredients)</span>
+    </div>
+    <input type="submit" value="Ajouter un gâteau" class="btn btn-primary">
+</form>
+
+
+
