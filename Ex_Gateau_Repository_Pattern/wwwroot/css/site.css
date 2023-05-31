@@ -36,10 +36,22 @@ img{
 }
 .button{
     padding: 10px;
+
 }
 
 .navbar{
 background-color: #84acbf;
+height: 100px;
+
+}
+
+.collapse{
+    text-align:center;
+}
+
+.navbar-brand{
+    font-size:32px;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .add{
