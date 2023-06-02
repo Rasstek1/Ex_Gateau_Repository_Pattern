@@ -71,26 +71,7 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
             return View(); 
         }
 
-        [HttpPost]
-        public IActionResult AjouterGateau(Gateau gateau)
-        {
-            if (ModelState.IsValid)
-            {
-                // Le modèle est valide, ajoutez le nouveau gâteau à votre source de données
-                // et redirigez l'utilisateur vers la vue qui liste les gâteaux.
-                _gateauRepository.AjouterGateau(gateau);
-                return RedirectToAction("Index");
-            }
-
-            // Le modèle n'est pas valide, il y a des erreurs de validation.
-            // Réaffichez le formulaire avec les messages d'erreur appropriés.
-            return View(gateau);
-        }
 
 
     }
 }
-
-
-            
-            
