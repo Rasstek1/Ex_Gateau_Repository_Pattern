@@ -1,0 +1,21 @@
+﻿@model Gateau
+
+@{
+    ViewData["Title"] = "Supprimer un gâteau";
+}
+
+<h1>Supprimer le gâteau</h1>
+
+<p>Êtes-vous Certain de vouloir supprimer ce beau gâteau :</p>
+
+<div>
+    <img src="@Url.Content($"~/img/{Model.UrlImage}")" class="card-img-top mb-3 border p-4" alt="Image du gâteau">
+    <h4>@Model.Nom</h4>
+    <p>@Model.Description</p>
+    <p>Ingrédients : @Model.Ingredients</p>
+</div>
+
+<form method="post" action="@Url.Action("ConfirmDelete", "Gateau", new { id = Model.Id })">
+    <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+    <a href="@Url.Action("Index", "Gateau")" class="btn btn-secondary">Annuler</a>
+</form>

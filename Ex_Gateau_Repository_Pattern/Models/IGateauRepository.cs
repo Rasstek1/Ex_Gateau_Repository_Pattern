@@ -8,6 +8,11 @@ namespace Ex_Gateau_Repository_Pattern.Models
     public interface IGateauRepository
     {
         IEnumerable<Gateau> MesGateaux { get; }// propriété qui retourne une liste de gateaux
+
+        void AjouterGateau(Gateau gateau);
+
+        void SupprimerGateau(int id);
+
         //IEnumerable est une interface qui permet de parcourir une collection, Une Liste, un tableau, un dictionnaire, etc.
         Gateau GetGateau(int id);
     }

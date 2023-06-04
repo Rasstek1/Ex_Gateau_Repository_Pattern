@@ -1,10 +1,23 @@
-﻿namespace Ex_Gateau_Repository_Pattern.Models
+﻿using System.Reflection;
+
+namespace Ex_Gateau_Repository_Pattern.Models
 {
     public class MemGateauxRepository : IGateauRepository//Class qui implémente l'interface IGateauRepository
     {
         //si new List<Gateau>() avait un parametre(int param) il faudrai le mettre a l'initialisation de builder.Services.AddSingleton<IGateauRepository, MemGateauxRepository>();
         //dans program.cs et ca ressemblerait a builder.Services.AddSingleton<IGateauRepository, MemGateauxRepository>(param);
-        public IEnumerable<Gateau> MesGateaux => new List<Gateau>()
+
+        private List<Gateau> _mesGateaux;
+        public MemGateauxRepository()
+        {
+            _mesGateaux = new List<Gateau>();
+        }
+
+
+        /* public IEnumerable<Gateau> MesGateaux => new List<Gateau>()*//// <summary>
+        /// Jai changer la ligne de code ci-dessus par celle ci-dessous pour pouvoir ajouter des gateaux avec la methode AjouterGateau(Gateau gateau)
+        /// </summary>
+        public IEnumerable<Gateau> MesGateaux { get; private set; } = new List<Gateau>()
         {
             new Gateau
             {
@@ -75,6 +88,25 @@
         {
             return MesGateaux.FirstOrDefault(g => g.Id == gateauId) ?? null;
         }
+        public void AjouterGateau(Gateau gateau)
+        {
+            // Obtenez les gâteaux existants à partir de la propriété MesGateaux
+            var gâteauxExistants = MesGateaux.ToList();
+
+            // Ajoutez le nouveau gâteau à la liste
+            gâteauxExistants.Add(gateau);
+
+            // Attribuez la nouvelle liste à la propriété MesGateaux
+            MesGateaux = gâteauxExistants;
+        }
+
+        public void SupprimerGateau(int gateauId)
+        {
+            MesGateaux = MesGateaux.Where(g => g.Id != gateauId);
+        }
+
+
+
 
 
 

@@ -8,7 +8,7 @@
 <!--Creer un formulaire-->
 
 
-<form method="post" action="@Url.Action("AjouterGateau", "Gateau")">
+<form method="post" action="@Url.Action("Create", "Gateau")">
     <div class="mb-3">
         <label for="nom" class="form-label">Nom du gâteau</label>
         <input type="text" class="form-control" id="nom" name="Nom" required>
@@ -30,6 +30,7 @@
         <span class="text-danger">@Html.ValidationMessageFor(m => m.Ingredients)</span>
     </div>
     <input type="submit" value="Ajouter un gâteau" class="btn btn-primary">
+
 </form>
 
 
