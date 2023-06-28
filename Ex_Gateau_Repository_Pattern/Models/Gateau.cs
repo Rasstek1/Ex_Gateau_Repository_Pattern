@@ -21,6 +21,6 @@ namespace Ex_Gateau_Repository_Pattern.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "La liste des ingrédients est requise.")]
-        public string Ingredients { get; set; }
+        public List <Ingredients> Ingredients { get; set; }
     }
 }

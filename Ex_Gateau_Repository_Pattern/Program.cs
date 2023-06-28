@@ -1,10 +1,16 @@
 using Ex_Gateau_Repository_Pattern.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<GateauDbContext>(options =>
+{
+       options.UseSqlServer(builder.Configuration["ConnectionStrings:GateauDbContextConnection"]);
+});
 
 ///summary
 ///Entre les accolades, vous devez spécifier le type que vous souhaitez enregistrer dans le conteneur d'injection de dépendances. 
