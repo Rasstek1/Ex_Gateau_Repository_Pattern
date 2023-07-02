@@ -16,7 +16,7 @@ builder.Services.AddDbContext<GateauDbContext>(options =>
 ///Entre les accolades, vous devez spécifier le type que vous souhaitez enregistrer dans le conteneur d'injection de dépendances. 
 ///Dans votre cas, vous pouvez enregistrer votre implémentation de l'interface IGateauRepository (MemGateauxRepository) en tant que
 ///service singleton.
-builder.Services.AddSingleton<IGateauRepository, MemGateauxRepository>();
+builder.Services.AddScoped<IGateauRepository, MemGateauxRepository>();
 ///summary
 ///Cela enregistrera MemGateauxRepository en tant que service singleton dans le conteneur d'injection de dépendances. 
 ///Ainsi, chaque fois que IGateauRepository est demandé, une instance de MemGateauxRepository sera fournie.

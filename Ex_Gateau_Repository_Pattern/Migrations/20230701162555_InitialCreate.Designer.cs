@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ex_Gateau_Repository_Pattern.Migrations
 {
     [DbContext(typeof(GateauDbContext))]
-    [Migration("20230628192444_ingredients+gateaudbcontext")]
-    partial class ingredientsgateaudbcontext
+    [Migration("20230701162555_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,10 +33,6 @@ namespace Ex_Gateau_Repository_Pattern.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ingredients")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -90,12 +86,17 @@ namespace Ex_Gateau_Repository_Pattern.Migrations
             modelBuilder.Entity("Ex_Gateau_Repository_Pattern.Models.Ingredients", b =>
                 {
                     b.HasOne("Ex_Gateau_Repository_Pattern.Models.Gateau", "Gateau")
-                        .WithMany()
+                        .WithMany("Ingredients")
                         .HasForeignKey("GateauID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Gateau");
+                });
+
+            modelBuilder.Entity("Ex_Gateau_Repository_Pattern.Models.Gateau", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

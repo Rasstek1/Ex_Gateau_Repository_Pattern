@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ex_Gateau_Repository_Pattern.Migrations
 {
     [DbContext(typeof(GateauDbContext))]
-    [Migration("20230628193642_string_ingredient_to_List")]
-    partial class string_ingredient_to_List
+    [Migration("20230702155835_List-Ingredients")]
+    partial class ListIngredients
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
