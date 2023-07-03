@@ -1,5 +1,6 @@
 ﻿using Ex_Gateau_Repository_Pattern.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -16,8 +17,14 @@ namespace Ex_Gateau_Repository_Pattern.Models
         public MemGateauxRepository(GateauDbContext gateauDbContext)
         {
             _gateauDbContext = gateauDbContext;
+            SeedData();
+        }
 
-            new Gateau
+        private void SeedData()
+        {
+
+        
+            var gateau1 = new Gateau
             {
                 Id = 1,
                 Nom = "Cheesecake new-yorkais au limoncello",
@@ -94,7 +101,7 @@ namespace Ex_Gateau_Repository_Pattern.Models
                 }
             };
 
-            new Gateau
+            var gateau2 =  new Gateau
             {
                 Id = 2,
                 Nom = "Gâteau au fromage",
@@ -154,7 +161,7 @@ namespace Ex_Gateau_Repository_Pattern.Models
                 }
             };
 
-            new Gateau
+            var gateau3 = new Gateau
             {
                 Id = 3,
                 Nom = "Gâteau à la vanille dans une tasse",
@@ -224,7 +231,7 @@ namespace Ex_Gateau_Repository_Pattern.Models
                 }
             };
 
-            new Gateau
+            var gateau4 = new Gateau
             {
                 Id = 4,
                 Nom = "Nuage de fruits",
@@ -292,7 +299,7 @@ namespace Ex_Gateau_Repository_Pattern.Models
                 }
             };
 
-            new Gateau
+            var gateau5 = new Gateau
             {
                 Id = 5,
                 Nom = "Scones à la courge, à la sauge et au cheddar",
@@ -384,7 +391,7 @@ namespace Ex_Gateau_Repository_Pattern.Models
                 }
             };
 
-            new Gateau
+            var gateau6 = new Gateau
             {
                 Id = 6,
                 Nom = "Clafoutis aux petits fruits",
@@ -461,6 +468,7 @@ namespace Ex_Gateau_Repository_Pattern.Models
             };
 
         }
+
 
         public void AjouterGateau(Gateau gateau)
         {

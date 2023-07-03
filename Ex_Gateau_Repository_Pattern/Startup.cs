@@ -14,7 +14,7 @@ namespace Ex_Gateau_Repository_Pattern
             services.AddSingleton<IGateauRepository, MemGateauxRepository>();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider)
         {
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -34,6 +34,30 @@ namespace Ex_Gateau_Repository_Pattern
                     name: "gateau",
                     pattern: "{controller=Gateau}/{action=Index}/{id?}");
             });
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<GateauDbContext>();
+                dbContext.Database.EnsureCreated(); // Crée la base de données si elle n'existe pas
+
+                if (!dbContext.Gateaux.Any()) // Vérifie si la table Gateaux est vide
+                {
+                    // Ajoute les données de gâteaux à la base de données
+                    dbContext.Gateaux.AddRange(
+                        new Gateau
+                        {
+                            // Propriétés du premier gâteau
+                        },
+                        new Gateau
+                        {
+                            // Propriétés du deuxième gâteau
+                        }
+                        // Ajouter les autres gâteaux...
+                    );
+
+                    dbContext.SaveChanges(); // Sauvegarde les changements dans la base de données
+                }
+            }
         }
     }
 }
