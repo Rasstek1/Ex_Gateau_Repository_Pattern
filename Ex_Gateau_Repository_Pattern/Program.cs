@@ -68,6 +68,6 @@ app.UseEndpoints(endpoints =>
     defaults: new { controller = "Gateau", action = "Create" });
 });
 
-
+InitialiseurBD.Seed(app);
 
 app.Run();
