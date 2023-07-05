@@ -10,7 +10,7 @@
            
         }
 
-        public List<Gateau> MesGateaux
+        public IEnumerable<Gateau> MesGateaux
         {
             get
             {
