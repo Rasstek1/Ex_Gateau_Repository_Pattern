@@ -9,11 +9,12 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
         /***************************************************************************/
      
         private readonly IGateauRepository _gateauRepository;
+        private readonly IIngredientsRepository _ingredientsRepository;
 
-
-        public GateauController(IGateauRepository gateauRepository)
+        public GateauController(IGateauRepository gateauRepository, IIngredientsRepository ingredientsRepository)
         {
             _gateauRepository = gateauRepository;
+            _ingredientsRepository = ingredientsRepository;
         }
 
 
@@ -51,8 +52,17 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
                 return NotFound();
             }
 
+            var ingredients = _ingredientsRepository.Ingredients;
+
+            if (ingredients != null)
+            {
+                var gateauIngredients = ingredients.Where(i => i.GateauID == id);
+                gateau.Ingredients = gateauIngredients.ToList();
+            }
+
             return View(gateau);
         }
+
         [HttpPost]
         public IActionResult Create(Gateau gateau)
         {
@@ -95,6 +105,70 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
             // Rediriger vers l'action Index pour afficher la liste de gâteaux mise à jour
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Gateau gateau = _gateauRepository.GetGateau(id);
+            if (gateau == null)
+            {
+                return NotFound();
+            }
+
+            return View(gateau);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Gateau gateau)
+        {
+            if (ModelState.IsValid)
+            {
+                // Récupérer le gâteau existant à partir du repository
+                var existingGateau = _gateauRepository.GetGateau(gateau.Id);
+
+                if (existingGateau == null)
+                {
+                    return NotFound();
+                }
+
+                // Mettre à jour les propriétés du gâteau existant avec les nouvelles valeurs
+                existingGateau.Nom = gateau.Nom;
+                existingGateau.UrlImage = gateau.UrlImage;
+                existingGateau.Description = gateau.Description;
+
+                // Mettre à jour les ingrédients du gâteau existant avec les nouvelles valeurs
+                foreach (var ingredient in gateau.Ingredients)
+                {
+                    // Vérifier si l'ingrédient existe déjà dans la liste d'ingrédients du gâteau
+                    var existingIngredient = existingGateau.Ingredients.FirstOrDefault(i => i.Id == ingredient.Id);
+
+                    if (existingIngredient != null)
+                    {
+                        // Mettre à jour les propriétés de l'ingrédient existant avec les nouvelles valeurs
+                        existingIngredient.Nom = ingredient.Nom;
+                        existingIngredient.Type = ingredient.Type;
+                        existingIngredient.Quantite = ingredient.Quantite;
+                        existingIngredient.Unite = ingredient.Unite;
+                        existingIngredient.Prix = ingredient.Prix;
+                    }
+                    else
+                    {
+                        // Ajouter un nouvel ingrédient à la liste d'ingrédients du gâteau
+                        existingGateau.Ingredients.Add(ingredient);
+                    }
+                }
+
+                // Enregistrer les modifications dans votre source de données (par exemple, base de données)
+                _gateauRepository.ModifierGateau(existingGateau);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(gateau);
+        }
+
+
+
 
     }
 }

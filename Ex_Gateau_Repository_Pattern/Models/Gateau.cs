@@ -26,5 +26,10 @@ namespace Ex_Gateau_Repository_Pattern.Models
 
         [Required(ErrorMessage = "La liste des ingrédients est requise.")]
         public List <Ingredients> Ingredients { get; set; }
+
+        public Gateau()
+        {
+            Ingredients = new List<Ingredients>();
+        }
     }
 }

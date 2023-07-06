@@ -21,6 +21,8 @@
                     <div class="mt-auto button">
                         <a href="@Url.Action("Ingredients", "Gateau", new { id = gateau.Id })" class="btn btn-primary mt-auto">Voir les ingrédients</a>
                         <a href="@Url.Action("Delete", "Gateau", new { id = gateau.Id })" class="btn btn-danger mt-auto">Supprimer</a>
+                        <a href="@Url.Action("Edit", "Gateau", new { id = gateau.Id })" class="btn btn-warning mt-auto">Modifier</a> <!-- Ajout du bouton de modification -->
+                    
                     </div>
                 </div>
             </div>
