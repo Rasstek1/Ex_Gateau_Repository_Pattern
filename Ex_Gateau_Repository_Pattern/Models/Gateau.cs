@@ -13,23 +13,26 @@ namespace Ex_Gateau_Repository_Pattern.Models
     /// </summary>
     public class Gateau
     {
-        public int Id { get; set; }
+        
+        
+            public int Id { get; set; }
 
-        [Required(ErrorMessage = "Le nom du gâteau est requis.")]
-        public string Nom { get; set; }
+            [Required(ErrorMessage = "Le nom du gâteau est requis.")]
+            public string Nom { get; set; }
 
-        [Required(ErrorMessage = "L'URL de l'image est requise.")]
-        public string UrlImage { get; set; }
+            [Required(ErrorMessage = "L'URL de l'image est requise.")]
+            public string UrlImage { get; set; }
 
-        [Required(ErrorMessage = "La description du gâteau est requise.")]
-        public string Description { get; set; }
+            [Required(ErrorMessage = "La description du gâteau est requise.")]
+            public string Description { get; set; }
 
-        [Required(ErrorMessage = "La liste des ingrédients est requise.")]
-        public List <Ingredients> Ingredients { get; set; }
+            [Required(ErrorMessage = "La liste des ingrédients est requise.")]
+            public List<Ingredients> Ingredients { get; set; }
 
-        public Gateau()
-        {
-            Ingredients = new List<Ingredients>();
-        }
+            public Gateau()
+            {
+                Ingredients = new List<Ingredients>();
+            }
+        
     }
 }

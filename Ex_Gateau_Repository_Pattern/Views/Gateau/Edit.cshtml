@@ -22,27 +22,10 @@
     </div>
     <div class="mb-3">
         <label for="ingredients" class="form-label">Ingrédients</label>
-        @for (int i = 0; i < Model.Ingredients.Count; i++)
+        @foreach (var ingredient in Model.Ingredients)
         {
             <div class="ingredient-container">
-                <input type="hidden" name="Ingredients.Index" value="@i" />
-                <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" name="Ingredients[@i].Nom" value="@Model.Ingredients[i].Nom" required>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" name="Ingredients[@i].Type" value="@Model.Ingredients[i].Type">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" name="Ingredients[@i].Quantite" value="@Model.Ingredients[i].Quantite" required>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" name="Ingredients[@i].Unite" value="@Model.Ingredients[i].Unite">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" name="Ingredients[@i].Prix" value="@Model.Ingredients[i].Prix" required>
-                    </div>
-                </div>
+                <p>@ingredient.Nom - @ingredient.Quantite @ingredient.Unite</p>
             </div>
         }
     </div>
