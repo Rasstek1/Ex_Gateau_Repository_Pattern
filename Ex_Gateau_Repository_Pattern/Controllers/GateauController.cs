@@ -166,6 +166,25 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
 
             return View(gateau);
         }
+        public IActionResult ModifierIngredients(int id)
+        {
+            // Récupérez le gâteau à modifier depuis votre source de données
+            Gateau gateau = _gateauRepository.GetGateau(id);
+
+            // Récupérez les ingrédients existants depuis votre source de données
+            List<Ingredients> ingredients = _ingredientsRepository.Ingredients.ToList();
+
+            // Créez une instance du ViewModel et assignez le gâteau et les ingrédients
+            GateauIngredientsViewModel viewModel = new GateauIngredientsViewModel
+            {
+                Gateau = gateau,
+                Ingredients = ingredients
+            };
+
+            return View("ModifierIngredients", viewModel);
+
+        }
+
 
 
 

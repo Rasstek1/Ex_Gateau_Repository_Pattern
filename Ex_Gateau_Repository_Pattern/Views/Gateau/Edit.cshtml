@@ -20,14 +20,10 @@
         <textarea class="form-control" id="description" name="Description" rows="3" required>@Model.Description</textarea>
         <span class="text-danger">@Html.ValidationMessageFor(m => m.Description)</span>
     </div>
-    <div class="mb-3">
-        <label for="ingredients" class="form-label">Ingrédients</label>
-        @foreach (var ingredient in Model.Ingredients)
-        {
-            <div class="ingredient-container">
-                <p>@ingredient.Nom - @ingredient.Quantite @ingredient.Unite</p>
-            </div>
-        }
-    </div>
+
+
+
     <input type="submit" value="Modifier le gâteau" class="btn btn-warning">
+    <a href="@Url.Action("ModifierIngredients", "Ingredients", new { id = Model.Id })" class="btn btn-primary">Modifier les ingrédients</a>
+
 </form>

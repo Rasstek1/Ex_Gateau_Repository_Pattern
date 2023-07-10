@@ -1,0 +1,38 @@
+﻿@model GateauIngredientsViewModel
+@using Ex_Gateau_Repository_Pattern.Models;
+
+@{
+    ViewData["Title"] = "Modifier les ingrédients";
+}
+
+<h1>Modifier les ingrédients</h1>
+
+@using (Html.BeginForm("ModifierIngredients", "Ingredient", FormMethod.Post))
+{
+    <div class="existing-ingredients">
+        <h2>Ingrédients existants</h2>
+        <ul>
+            @foreach (var ingredient in Model.Ingredients)
+            {
+                <li>@ingredient.Nom - @ingredient.Quantite @ingredient.Unite</li>
+            }
+        </ul>
+    </div>
+
+    <div class="new-ingredient">
+        <h2>Nouvel ingrédient</h2>
+        <div class="form-group">
+            <label for="nomIngredient">Nom de l'ingrédient</label>
+            <input type="text" class="form-control" id="nomIngredient" name="NomIngredient">
+        </div>
+        <div class="form-group">
+            <label for="quantiteIngredient">Quantité</label>
+            <input type="number" class="form-control" id="quantiteIngredient" name="QuantiteIngredient">
+        </div>
+        <div class="form-group">
+            <label for="uniteIngredient">Unité</label>
+            <input type="text" class="form-control" id="uniteIngredient" name="UniteIngredient">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter l'ingrédient</button>
+    </div>
+}
