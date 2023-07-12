@@ -136,27 +136,7 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
                 existingGateau.UrlImage = gateau.UrlImage;
                 existingGateau.Description = gateau.Description;
 
-                // Mettre à jour les ingrédients du gâteau existant avec les nouvelles valeurs
-                foreach (var ingredient in gateau.Ingredients)
-                {
-                    // Vérifier si l'ingrédient existe déjà dans la liste d'ingrédients du gâteau
-                    var existingIngredient = existingGateau.Ingredients.FirstOrDefault(i => i.Id == ingredient.Id);
-
-                    if (existingIngredient != null)
-                    {
-                        // Mettre à jour les propriétés de l'ingrédient existant avec les nouvelles valeurs
-                        existingIngredient.Nom = ingredient.Nom;
-                        existingIngredient.Type = ingredient.Type;
-                        existingIngredient.Quantite = ingredient.Quantite;
-                        existingIngredient.Unite = ingredient.Unite;
-                        existingIngredient.Prix = ingredient.Prix;
-                    }
-                    else
-                    {
-                        // Ajouter un nouvel ingrédient à la liste d'ingrédients du gâteau
-                        existingGateau.Ingredients.Add(ingredient);
-                    }
-                }
+   
 
                 // Enregistrer les modifications dans votre source de données (par exemple, base de données)
                 _gateauRepository.ModifierGateau(existingGateau);
@@ -166,24 +146,7 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
 
             return View(gateau);
         }
-        public IActionResult ModifierIngredients(int id)
-        {
-            // Récupérez le gâteau à modifier depuis votre source de données
-            Gateau gateau = _gateauRepository.GetGateau(id);
 
-            // Récupérez les ingrédients existants depuis votre source de données
-            List<Ingredients> ingredients = _ingredientsRepository.Ingredients.ToList();
-
-            // Créez une instance du ViewModel et assignez le gâteau et les ingrédients
-            GateauIngredientsViewModel viewModel = new GateauIngredientsViewModel
-            {
-                Gateau = gateau,
-                Ingredients = ingredients
-            };
-
-            return View("ModifierIngredients", viewModel);
-
-        }
 
 
 

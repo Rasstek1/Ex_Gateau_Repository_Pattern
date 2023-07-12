@@ -1,6 +1,6 @@
 ﻿namespace Ex_Gateau_Repository_Pattern.Models
 {
-    public class Ingredients
+    public class Ingredient
     {
         public int Id { get; set; }
         public string Nom { get; set; }

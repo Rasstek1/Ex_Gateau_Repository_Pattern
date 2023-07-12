@@ -2,13 +2,13 @@
 {
     public interface IIngredientsRepository
     {
-        IEnumerable<Ingredients> Ingredients { get; }
+        IEnumerable<Ingredient> Ingredients { get; }
 
-        void AjouterIngredient(Ingredients ingredients);
+        void AjouterIngredient(Ingredient ingredients);
 
         void SupprimerIngredient(int id);
 
-        void ModifierIngredient(Ingredients ingredients);
+        void ModifierIngredient(Ingredient ingredients);
 
         Gateau GetIngredient(int id);
     }

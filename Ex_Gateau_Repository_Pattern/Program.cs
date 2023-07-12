@@ -14,8 +14,8 @@ builder.Services.AddDbContext<GateauDbContext>(options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:GateauDbContextConnection"]);
 });
 
-builder.Services.AddScoped<IGateauRepository, MemGateauxRepository>();
-builder.Services.AddScoped<IIngredientsRepository, BDIngredientsRepository>();
+builder.Services.AddScoped<IGateauRepository, BDGateauRepository>();
+builder.Services.AddScoped<IIngredientsRepository, BDIngredientRepository>();
 
 var app = builder.Build();
 

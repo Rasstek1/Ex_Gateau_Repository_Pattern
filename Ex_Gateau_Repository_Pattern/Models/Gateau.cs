@@ -27,11 +27,11 @@ namespace Ex_Gateau_Repository_Pattern.Models
             public string Description { get; set; }
 
             [Required(ErrorMessage = "La liste des ingrédients est requise.")]
-            public List<Ingredients> Ingredients { get; set; }
+            public List<Ingredient> Ingredients { get; set; }
 
             public Gateau()
             {
-                Ingredients = new List<Ingredients>();
+                Ingredients = new List<Ingredient>();
             }
         
     }

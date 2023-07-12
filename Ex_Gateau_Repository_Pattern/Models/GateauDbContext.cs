@@ -9,6 +9,6 @@ namespace Ex_Gateau_Repository_Pattern.Models
         }
 
         public DbSet<Gateau> Gateaux { get; set; }
-        public DbSet<Ingredients> Ingredients { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
     }
 }
