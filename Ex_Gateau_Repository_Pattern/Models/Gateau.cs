@@ -33,6 +33,11 @@ namespace Ex_Gateau_Repository_Pattern.Models
             {
                 Ingredients = new List<Ingredient>();
             }
-        
+
+        public void AjouterIngredient(Ingredient ingredient)
+        {
+            Ingredients.Add(ingredient);
+        }
+
     }
 }

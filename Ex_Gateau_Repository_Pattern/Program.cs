@@ -15,7 +15,7 @@ builder.Services.AddDbContext<GateauDbContext>(options =>
 });
 
 builder.Services.AddScoped<IGateauRepository, BDGateauRepository>();
-builder.Services.AddScoped<IIngredientsRepository, BDIngredientRepository>();
+builder.Services.AddScoped<IIngredientRepository, BDIngredientRepository>();
 
 var app = builder.Build();
 

@@ -9,12 +9,12 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
         /***************************************************************************/
      
         private readonly IGateauRepository _gateauRepository;
-        private readonly IIngredientsRepository _ingredientsRepository;
+        private readonly IIngredientRepository _ingredientRepository;
 
-        public GateauController(IGateauRepository gateauRepository, IIngredientsRepository ingredientsRepository)
+        public GateauController(IGateauRepository gateauRepository, IIngredientRepository ingredientRepository)
         {
             _gateauRepository = gateauRepository;
-            _ingredientsRepository = ingredientsRepository;
+            _ingredientRepository = ingredientRepository;
         }
 
 
@@ -52,7 +52,7 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
                 return NotFound();
             }
 
-            var ingredients = _ingredientsRepository.Ingredients;
+            var ingredients = _ingredientRepository.Ingredients;
 
             if (ingredients != null)
             {
@@ -146,6 +146,38 @@ namespace Ex_Gateau_Repository_Pattern.Controllers
 
             return View(gateau);
         }
+        [HttpPost]
+        public IActionResult ModifierIngredient(Ingredient ingredient)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingIngredient = _ingredientRepository.GetIngredient(ingredient.Id);
+                if (existingIngredient == null)
+                {
+                    return NotFound();
+                }
+
+                existingIngredient.Nom = ingredient.Nom;
+                existingIngredient.Type = ingredient.Type;
+                existingIngredient.Quantite = ingredient.Quantite;
+                existingIngredient.Unite = ingredient.Unite;
+                existingIngredient.Prix = ingredient.Prix;
+
+                var gateau = _gateauRepository.GetGateau(existingIngredient.GateauID);
+                if (gateau != null)
+                {
+                    gateau.Ingredients.Add(existingIngredient);
+                    _gateauRepository.ModifierGateau(gateau);
+                }
+
+                _ingredientRepository.ModifierIngredient(existingIngredient);
+
+                return RedirectToAction("Index", "Gateau"); // Rediriger vers l'action Index du contrôleur Gateau
+            }
+
+            return View(ingredient);
+        }
+
 
 
 

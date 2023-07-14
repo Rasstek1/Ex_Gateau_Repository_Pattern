@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Ex_Gateau_Repository_Pattern.Models
 {
-    public class BDIngredientRepository : IIngredientsRepository
+    public class BDIngredientRepository : IIngredientRepository
     {
         private readonly GateauDbContext _gateauDbContext;
 
@@ -25,13 +25,13 @@ namespace Ex_Gateau_Repository_Pattern.Models
             return _gateauDbContext.Ingredients.FirstOrDefault(i => i.Id == ingredientId);
         }
 
-        void IIngredientsRepository.AjouterIngredient(Ingredient ingredient)
+        void IIngredientRepository.AjouterIngredient(Ingredient ingredient)
         {
             _gateauDbContext.Ingredients.Add(ingredient);
             _gateauDbContext.SaveChanges();
         }
 
-        void IIngredientsRepository.SupprimerIngredient(int id)
+        void IIngredientRepository.SupprimerIngredient(int id)
         {
             var ingredient = _gateauDbContext.Ingredients.FirstOrDefault(i => i.Id == id);
             if (ingredient != null)
@@ -41,13 +41,13 @@ namespace Ex_Gateau_Repository_Pattern.Models
             }
         }
 
-        void IIngredientsRepository.ModifierIngredient(Ingredient ingredient)
+        void IIngredientRepository.ModifierIngredient(Ingredient ingredient)
         {
             _gateauDbContext.Ingredients.Update(ingredient);
             _gateauDbContext.SaveChanges();
         }
 
-        Gateau IIngredientsRepository.GetIngredient(int id)
+        Gateau IIngredientRepository.GetIngredient(int id)
         {
             throw new NotImplementedException();
         }

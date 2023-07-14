@@ -1,14 +1,14 @@
 ﻿namespace Ex_Gateau_Repository_Pattern.Models
 {
-    public interface IIngredientsRepository
+    public interface IIngredientRepository
     {
         IEnumerable<Ingredient> Ingredients { get; }
 
-        void AjouterIngredient(Ingredient ingredients);
+        void AjouterIngredient(Ingredient ingredient);
 
         void SupprimerIngredient(int id);
 
-        void ModifierIngredient(Ingredient ingredients);
+        void ModifierIngredient(Ingredient ingredient);
 
         Gateau GetIngredient(int id);
     }
